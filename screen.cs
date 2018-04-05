@@ -28,7 +28,7 @@ namespace ConsoleApplication1
               radio = 0.2f;
               GL.LoadIdentity();
               GL.MatrixMode(MatrixMode.Projection);
-              GL.Ortho(0, 1, 0, 1, 0, 1);
+              GL.Ortho(-2, 2, -2, 2, -1, 10);
               foco.valores(0.5,0.5,0);
               for (int i = 0; i < 10000; i++)
               {
@@ -47,7 +47,21 @@ namespace ConsoleApplication1
           protected override void OnRenderFrame(FrameEventArgs e)
           {
               base.OnRenderFrame(e);
-              GL.Begin(PrimitiveType.Points);
+
+         /* GL.Begin(PrimitiveType.LineLoop);
+          
+              GL.Vertex3(0,0,0);
+        GL.Vertex3(1, 0, 0);
+        GL.Vertex3(1, 1, 0);
+        GL.Vertex3(0, 1, 0);
+
+              GL.Vertex3(0, 1, 1);
+              GL.Vertex3(0, 0, 1);
+              GL.Vertex3(1, 0, 1);
+              GL.Vertex3(1, 1, 1);
+              GL.End();*/
+
+            /*  GL.Begin(PrimitiveType.Points);
               for(int i=0;i<10000;i++){
 
                  intensidad=1/Math.Sqrt(
@@ -59,7 +73,7 @@ namespace ConsoleApplication1
                   GL.Color3(intensidad * radio, intensidad * radio, intensidad * radio);
                   GL.Vertex2(punto[i].x,punto[i].y);
               }
-               GL.End();
+               GL.End();*/
 
               this.SwapBuffers();
           }
