@@ -31,13 +31,7 @@ namespace ConsoleApplication1
               GL.LoadIdentity();
               GL.MatrixMode(MatrixMode.Projection);
               GL.Ortho(0, 1, 0, 1, 0, 1);
-              foco.valores(posx,posy,0);
-              for (int i = 0; i < 10000; i++)
-              {
-                  punto[i] = new Punto();
-                  punto[i].valores(aleatorio.NextDouble(), aleatorio.NextDouble(), 0);
-
-              }
+             
           }
 
           protected override void OnUpdateFrame(FrameEventArgs e)
@@ -50,31 +44,10 @@ namespace ConsoleApplication1
           {
               base.OnRenderFrame(e);
 
-         /* GL.Begin(PrimitiveType.LineLoop);
-          
-              GL.Vertex3(0,0,0);
-        GL.Vertex3(1, 0, 0);
-        GL.Vertex3(1, 1, 0);
-        GL.Vertex3(0, 1, 0);
-
-              GL.Vertex3(0, 1, 1);
-              GL.Vertex3(0, 0, 1);
-              GL.Vertex3(1, 0, 1);
-              GL.Vertex3(1, 1, 1);
-              GL.End();*/
+        
 
              GL.Begin(PrimitiveType.Points);
-              for(int i=0;i<10000;i++){
-
-                 intensidad=1/Math.Sqrt(
-                     Math.Pow(foco.x- punto[i].x ,2)+
-                     Math.Pow(foco.y- punto[i].y ,2)+
-                     Math.Pow(foco.z- punto[i].z ,2));
-                     
-
-                  GL.Color3(intensidad * radio, intensidad * radio, intensidad * radio);
-                  GL.Vertex2(punto[i].x,punto[i].y);
-              }
+            
                GL.End();
                foco.valores(posx, posy, 0);
               this.SwapBuffers();
@@ -95,9 +68,9 @@ namespace ConsoleApplication1
 
           protected override void OnMouseMove(OpenTK.Input.MouseMoveEventArgs e)
           {
-              base.OnMouseMove(e);
+             /* base.OnMouseMove(e);
               posx = 0.001 * e.Mouse.X;
-              posy = 0.001 * e.Mouse.Y;
+              posy = 0.001 * e.Mouse.Y;*/
           }
 
 
