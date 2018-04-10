@@ -38,7 +38,7 @@ namespace ConsoleApplication1
               vertices[0] = new Punto(); vertices[0].valores(0f, 0f, 0f);
               vertices[1] = new Punto(); vertices[1].valores(0.5f, 0f, 0f);
               vertices[2] = new Punto(); vertices[2].valores(0.5f, 0.5f, 0f);
-              vertices[3] = new Punto(); vertices[3].valores(0f, 0.5f, 0.5f);
+              vertices[3] = new Punto(); vertices[3].valores(0f, 0.5f, 0F);
           }
 
           protected override void OnUpdateFrame(FrameEventArgs e)
@@ -51,7 +51,7 @@ namespace ConsoleApplication1
           {
               base.OnRenderFrame(e);
 
-        
+              foco.valores(posx, posy, 0);
 
              GL.Begin(PrimitiveType.Quads);
 
