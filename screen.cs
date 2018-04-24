@@ -47,10 +47,14 @@ namespace ConsoleApplication1
             vertices[6] = new Punto(); vertices[6].valores(1f, 1f, 1f);
             vertices[7] = new Punto(); vertices[7].valores(0f, 1f, 1F);
             
-              vertices[0] = transformar.rotar(vertices[0], 45);
+         /*     vertices[0] = transformar.rotar(vertices[0], 45);
               vertices[1] = transformar.rotar(vertices[1], 45);
               vertices[2] = transformar.rotar(vertices[2], 45);
               vertices[3] = transformar.rotar(vertices[3], 45);
+              vertices[4] = transformar.rotar(vertices[4], 45);
+              vertices[5] = transformar.rotar(vertices[5], 45);
+              vertices[6] = transformar.rotar(vertices[6], 45);
+              vertices[7] = transformar.rotar(vertices[7], 45);*/
 
         }
 
@@ -58,6 +62,9 @@ namespace ConsoleApplication1
           {
               base.OnUpdateFrame(e);
               GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            //GL.
+              //GL.MatrixMode(MatrixMode.Modelview);
+              //GL.LoadMatrix(ref)
               GL.ClearColor(0f, 0f, 0f, 0f);
           }
           protected override void OnRenderFrame(FrameEventArgs e)
@@ -66,30 +73,47 @@ namespace ConsoleApplication1
             base.OnRenderFrame(e);
             GL.LoadIdentity();
             GL.Scale(0.5, 0.5, 0.5);
-          //  GL.Rotate(angulo, 0, 0, 1);
-             
+         // GL.Rotate(angulo, 1, 0, 0);
+            GL.Begin(PrimitiveType.LineLoop);
+            for (int i = 0; i <= 7; i++)
+            {
+                
+                //vertices[i] = transformar.rotar(vertices[i], 1);
+               
+                GL.Vertex3(vertices[i].x+Math.Cos(angulo)-vertices[i].y*Math.Sin(angulo),
+                  vertices[i].x * Math.Sin(angulo) + vertices[i].y * Math.Cos(angulo), 
+                    vertices[i].z);
+               
+               
+           
+            }
 
-             GL.Begin(PrimitiveType.LineLoop);
             
+               GL.End();
+/*
             GL.Vertex3(vertices[0].x, vertices[0].y, vertices[0].z);
 
             GL.Vertex3(vertices[1].x, vertices[1].y, vertices[1].z);
             GL.Vertex3(vertices[2].x, vertices[2].y, vertices[2].z);
             GL.Vertex3(vertices[3].x, vertices[3].y, vertices[3].z);
-          
-            GL.End();
+            GL.Vertex3(vertices[4].x, vertices[4].y, vertices[4].z);
+            GL.Vertex3(vertices[5].x, vertices[5].y, vertices[5].z);
+            GL.Vertex3(vertices[6].x, vertices[6].y, vertices[6].z);
+            GL.Vertex3(vertices[7].x, vertices[7].y, vertices[7].z);
 
+
+            GL.End();*/
         
           
-            if(angulo> 360)
+           if(angulo> 360)
             {
                 angulo = 0;
             }
-            angulo++;
+            angulo+=0.1;
 
              SwapBuffers();
           }
-
+              
           protected override void OnKeyPress(KeyPressEventArgs e)
           {
               base.OnKeyPress(e);
