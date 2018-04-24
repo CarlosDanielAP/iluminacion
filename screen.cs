@@ -12,6 +12,9 @@ namespace ConsoleApplication1
 
         Punto[] punto = new Punto[10000];
         Punto foco= new Punto();
+        Punto ojo = new Punto();
+        Punto direccion = new Punto();
+            Punto objetivo =new Punto();
         Punto []vertices=new Punto[8];
         Transformaciones transformar=new Transformaciones();
         Random aleatorio= new Random();
@@ -62,9 +65,9 @@ namespace ConsoleApplication1
           {
               base.OnUpdateFrame(e);
               GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            //GL.
-              //GL.MatrixMode(MatrixMode.Modelview);
-              //GL.LoadMatrix(ref)
+          /*  Matrix4 LookAT=Matrix4.LookAt(ojo,objetivo,direccion);
+              GL.MatrixMode(MatrixMode.Modelview);
+              GL.LoadMatrix(ref LookAt);*/
               GL.ClearColor(0f, 0f, 0f, 0f);
           }
           protected override void OnRenderFrame(FrameEventArgs e)
