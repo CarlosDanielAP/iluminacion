@@ -24,6 +24,7 @@ namespace ConsoleApplication1
         double posy;
         double distancia;
         double angulo;
+        double escala;
 
         public screen(int ancho, int alto): base (ancho,alto)
         {
@@ -76,19 +77,19 @@ namespace ConsoleApplication1
             base.OnRenderFrame(e);
             GL.LoadIdentity();
             GL.Scale(0.5, 0.5, 0.5);
-         // GL.Rotate(angulo, 1, 0, 0);
+        //  GL.Rotate(angulo, 0, 1, 0);
             GL.Begin(PrimitiveType.LineLoop);
             for (int i = 0; i <= 7; i++)
             {
-                
+               // GL.Vertex3(vertices[i].x, vertices[i].y, vertices[i].z);
                 //vertices[i] = transformar.rotar(vertices[i], 1);
                
-                GL.Vertex3(vertices[i].x+Math.Cos(angulo)-vertices[i].y*Math.Sin(angulo),
+           /*  GL.Vertex3(vertices[i].x+Math.Cos(angulo)-vertices[i].y*Math.Sin(angulo),
                   vertices[i].x * Math.Sin(angulo) + vertices[i].y * Math.Cos(angulo), 
-                    vertices[i].z);
+                    vertices[i].z);*/
+                
+              GL.Vertex3(escala* vertices[i].x, escala * vertices[i].y ,escala*vertices[i].z);
                
-               
-           
             }
 
             
@@ -106,8 +107,13 @@ namespace ConsoleApplication1
 
 
             GL.End();*/
-        
-          
+
+               if (escala > 1)
+               {
+                   escala =1;
+               }
+               escala+=0.01;
+
            if(angulo> 360)
             {
                 angulo = 0;
